@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tidewater Bakery</title>
+<style>
+:root{--paper:#f3f6f4;--ink:#10303a;--muted:#4b6269;--line:#c5d3d0;--saffron:#e3a008;--plum:#5b2a4e;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f242b;--ink:#e8f0ee;--muted:#9db3b8;--line:#27424a;--plum:#e9b7d9;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f242b;--ink:#e8f0ee;--muted:#9db3b8;--line:#27424a;--plum:#e9b7d9;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.0625rem/1.65 var(--sans)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
+header,main,footer{width:min(100% - 2.5rem,62rem);margin-inline:auto}
+header{display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:baseline;justify-content:space-between;padding:1.5rem 0;border-bottom:2px solid var(--ink)}
+.brand{font:700 1.5rem/1 var(--serif);text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem}
+nav a{text-decoration:none;border-bottom:3px solid transparent;padding:.25rem 0}
+nav a:hover{border-bottom-color:var(--saffron)}
+section{padding:3rem 0 1rem}
+h1,h2{font-family:var(--serif);line-height:1.1;letter-spacing:-.015em;margin:0 0 1rem}
+h1{font-size:clamp(2.25rem,6vw,4.25rem);max-width:18ch}
+h2{font-size:1.75rem;color:var(--plum)}
+p{max-width:62ch}
+.lede{font-size:1.25rem;color:var(--muted);max-width:52ch}
+.button{display:inline-block;padding:.8rem 1.4rem;font-weight:600;background:var(--saffron);color:#10303a;text-decoration:none;border-radius:4px}
+.button:hover{background:#f0b422}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem}
+.tabs button{font:inherit;padding:.4rem 1rem;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.menu{list-style:none;margin:0;padding:0}
+.menu li{display:flex;justify-content:space-between;gap:1.5rem;padding:.9rem 0;border-top:1px solid var(--line)}
+.menu li[hidden]{display:none}
+.menu div{display:flex;flex-direction:column}
+.menu span{color:var(--muted);font-size:.98rem}
+.price{font-family:var(--serif);font-size:1.15rem;white-space:nowrap}
+.split{display:grid;gap:2rem 4rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.hours{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem}
+.hours dt{font-weight:600}
+.hours dd{margin:0;color:var(--muted)}
+footer{margin-top:3rem;padding:1.5rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#top">Tidewater Bakery</a>
+  <nav aria-label="Main"><a href="#menu">Menu</a><a href="#story">Our story</a><a href="#visit">Visit us</a></nav>
+</header>
+<main id="top">
+  <section>
+    <h1>Bread baked before sunrise, sold until it’s gone.</h1>
+    <p class="lede">We bake in small batches in the same oven every morning. Come early for the sourdough.</p>
+    <p><a class="button" href="#menu">See the menu</a></p>
+  </section>
+
+  <section id="menu">
+    <h2>Menu</h2>
+    <div class="tabs" role="group" aria-label="Filter menu">
+      <button aria-pressed="true" data-f="all">All</button>
+      <button aria-pressed="false" data-f="Loaves">Loaves</button>
+      <button aria-pressed="false" data-f="Pastry">Pastry</button>
+      <button aria-pressed="false" data-f="Drinks">Drinks</button>
+    </div>
+    <ul class="menu" id="items"></ul>
+  </section>
+
+  <section id="story">
+    <h2>Our story</h2>
+    <p>Tidewater started as one oven and a handful of regulars. We still make everything ourselves: the starter is fed twice a day, the dough rests overnight, and the first loaves come out before the street wakes up.</p>
+    <p>If something sells out, we baked the right amount. Come earlier tomorrow.</p>
+  </section>
+
+  <section id="visit">
+    <h2>Visit us</h2>
+    <div class="split">
+      <div>
+        <p>14 Harbor Lane. Walk-ins welcome, no reservations needed.</p>
+        <dl class="hours">
+          <dt>Tuesday to Friday</dt><dd>6:30 am to 2 pm</dd>
+          <dt>Saturday</dt><dd>7 am to 1 pm</dd>
+          <dt>Sunday and Monday</dt><dd>Closed</dd>
+        </dl>
+      </div>
+      <div>
+        <p>Email us by 6 pm the day before and we’ll set your loaves aside.</p>
+        <p><a class="button" href="mailto:hello@example.com">Email hello@example.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><p>Tidewater Bakery, 14 Harbor Lane</p></footer>
+
+<script>
+const MENU=[
+["Loaves","Country sourdough","Slow-fermented for 30 hours, blistered crust.","8.50"],
+["Loaves","Rye and caraway","Dense, sour and good with butter.","9.00"],
+["Loaves","Seeded spelt","Sunflower, flax and pumpkin seeds.","9.50"],
+["Pastry","Butter croissant","Laminated by hand, 27 layers.","4.25"],
+["Pastry","Cardamom bun","Twisted and finished with pearl sugar.","4.00"],
+["Pastry","Plum galette","Seasonal fruit, rye crust.","5.50"],
+["Drinks","Filter coffee","Roasted two streets away.","3.00"],
+["Drinks","Hot chocolate","Dark, with a pinch of salt.","4.00"]];
+const list=document.getElementById("items");
+for(const [cat,name,desc,price] of MENU){
+  const li=document.createElement("li");li.dataset.cat=cat;
+  const d=document.createElement("div");
+  const s=document.createElement("strong");s.textContent=name;
+  const p=document.createElement("span");p.textContent=desc;
+  d.append(s,p);
+  const b=document.createElement("b");b.className="price";b.textContent="$"+price;
+  li.append(d,b);list.append(li);
+}
+document.querySelectorAll(".tabs button").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-pressed",x===btn));
+  list.querySelectorAll("li").forEach(li=>li.hidden=btn.dataset.f!=="all"&&li.dataset.cat!==btn.dataset.f);
+}));
+</script>
+</body>
+</html>
